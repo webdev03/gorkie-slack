@@ -1,0 +1,39 @@
+{
+  "name": "ai-sdk-slack-chatbot",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "bun run --watch server/index.ts",
+    "start": "bun run server/index.ts",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "check": "biome check .",
+    "fix": "biome check --write"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@langfuse/otel": "^4.4.9",
+    "@langfuse/tracing": "^4.4.9",
+    "@openrouter/ai-sdk-provider": "^1.5.3",
+    "@opentelemetry/sdk-node": "^0.208.0",
+    "@slack/bolt": "^4.6.0",
+    "@t3-oss/env-core": "^0.13.8",
+    "ai": "^5.0.113",
+    "ai-fallback": "^1.0.8",
+    "compromise": "^14.14.5",
+    "exa-js": "^1.10.2",
+    "jsonrepair": "^3.13.1",
+    "pino": "^10.1.0",
+    "pino-pretty": "^13.1.3",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.8",
+    "@types/bun": "^1.3.4",
+    "typescript": "^5.9.3"
+  },
+  "private": true
+}
