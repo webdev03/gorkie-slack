@@ -55,7 +55,7 @@ export const summariseThread = ({
         }
 
         const { text } = await generateText({
-          model: provider.languageModel('chat-model'),
+          model: provider.languageModel('summariser-model'),
           messages,
           system: summariseThreadPrompt(instructions),
           temperature: 0.7,

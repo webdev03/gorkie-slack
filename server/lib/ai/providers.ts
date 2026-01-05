@@ -27,8 +27,22 @@ const chatModel = createFallback({
   modelResetInterval: 60000,
 });
 
+const summariserModel = createFallback({
+  models: [
+    hackclub('google/gemini-2.5-flash-lite'),
+    hackclub('openai/gpt-5-nano'),
+    // openrouter('google/gemini-2.5-flash-lite'),
+    // openrouter('openai/gpt-5-nano'),
+  ],
+  onError: (_error, modelId) => {
+    logger.error(`error with model ${modelId}, switching to next model`);
+  },
+  modelResetInterval: 60000,
+});
+
 export const provider = customProvider({
   languageModels: {
     'chat-model': chatModel,
+    'summariser-model': summariserModel,
   },
 });
