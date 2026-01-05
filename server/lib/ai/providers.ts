@@ -29,8 +29,9 @@ const chatModel = createFallback({
 
 const summariserModel = createFallback({
   models: [
-    hackclub('google/gemini-2.5-flash-lite-preview-09-2025'),
-    hackclub('openai/gpt-5-nano'),
+    hackclub('google/gemini-3-flash-preview'),
+    hackclub('google/gemini-2.5-flash'),
+    hackclub('openai/gpt-5-mini'),
     // openrouter('google/gemini-2.5-flash-lite-preview-09-2025'),
     // openrouter('openai/gpt-5-nano'),
   ],
