@@ -17,7 +17,7 @@ export const env = createEnv({
     // Redis
     REDIS_URL: z.string().min(1),
     // AI
-    // OPENROUTER_API_KEY: z.string().min(1),
+    OPENROUTER_API_KEY: z.string().min(1),
     HACKCLUB_API_KEY: z.string().min(1),
     // Logging
     LOG_DIRECTORY: z.string().optional().default('logs'),

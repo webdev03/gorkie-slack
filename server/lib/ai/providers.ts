@@ -9,17 +9,17 @@ const hackclub = createOpenRouter({
   baseURL: 'https://ai.hackclub.com/proxy/v1',
 });
 
-// const openrouter = createOpenRouter({
-//   apiKey: env.OPENROUTER_API_KEY,
-// });
+const openrouter = createOpenRouter({
+  apiKey: env.OPENROUTER_API_KEY,
+});
 
 const chatModel = createFallback({
   models: [
     hackclub('google/gemini-3-flash-preview'),
     hackclub('google/gemini-2.5-flash'),
     hackclub('openai/gpt-5-mini'),
-    // openrouter('google/gemini-2.5-flash'),
-    // openrouter('openai/gpt-5-mini'),
+    openrouter('google/gemini-2.5-flash'),
+    openrouter('openai/gpt-5-mini'),
   ],
   onError: (_error, modelId) => {
     logger.error(`error with model ${modelId}, switching to next model`);
@@ -32,8 +32,8 @@ const summariserModel = createFallback({
     hackclub('google/gemini-3-flash-preview'),
     hackclub('google/gemini-2.5-flash'),
     hackclub('openai/gpt-5-mini'),
-    // openrouter('google/gemini-2.5-flash-lite-preview-09-2025'),
-    // openrouter('openai/gpt-5-nano'),
+    openrouter('google/gemini-2.5-flash-lite-preview-09-2025'),
+    openrouter('openai/gpt-5-nano'),
   ],
   onError: (_error, modelId) => {
     logger.error(`error with model ${modelId}, switching to next model`);
