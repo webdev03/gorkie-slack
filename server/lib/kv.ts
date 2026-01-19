@@ -19,6 +19,6 @@ export async function ratelimit(contextId: string) {
 }
 
 export const redisKeys = {
-  messageCount: (contextId: string) => `ctx:messageCount:${contextId}`,
-  channelCount: (contextId: string) => `ctx:channelCount:${contextId}`,
+  messageCount: (contextId: string) => `gorkie:ctx:messageCount:${contextId}`,
+  channelCount: (contextId: string) => `gorkie:ctx:channelCount:${contextId}`,
 };
