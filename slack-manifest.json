@@ -3,9 +3,35 @@
     "name": "gorkie"
   },
   "features": {
+    "app_home": {
+      "home_tab_enabled": false,
+      "messages_tab_enabled": true,
+      "messages_tab_read_only_enabled": false
+    },
     "bot_user": {
       "display_name": "gorkie",
       "always_online": true
+    },
+    "assistant_view": {
+      "assistant_description": "I can help you!",
+      "suggested_prompts": [
+        {
+          "title": "Help with Slack",
+          "message": "How do I block a user in Slack?"
+        },
+        {
+          "title": "Mathematics",
+          "message": "What is the Fundamental Theorem of Arithmetic?"
+        },
+        {
+          "title": "Philosophy",
+          "message": "Is AI sentient?"
+        },
+        {
+          "title": "Chatting",
+          "message": "Hi there gorkie!"
+        }
+      ]
     }
   },
   "oauth_config": {
