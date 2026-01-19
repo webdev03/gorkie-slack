@@ -22,7 +22,7 @@
     "@slack/bolt": "^4.6.0",
     "@t3-oss/env-core": "^0.13.10",
     "ai": "^5.0.121",
-    "ai-fallback": "^1.0.8",
+    "ai-retry": "^0.12.0",
     "compromise": "^14.14.5",
     "exa-js": "^1.10.2",
     "jsonrepair": "^3.13.2",

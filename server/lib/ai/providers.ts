@@ -1,10 +1,10 @@
 import { createOpenRouter } from '@openrouter/ai-sdk-provider';
-import { customProvider } from 'ai';
-import { createFallback } from 'ai-fallback';
+import { customProvider, wrapLanguageModel } from 'ai';
+import { createRetryable } from 'ai-retry';
 import { env } from '~/env';
 import logger from '~/lib/logger';
 
-const hackclub = createOpenRouter({
+const hackclubBase = createOpenRouter({
   apiKey: env.HACKCLUB_API_KEY,
   baseURL: 'https://ai.hackclub.com/proxy/v1',
 });
@@ -13,32 +13,47 @@ const openrouter = createOpenRouter({
   apiKey: env.OPENROUTER_API_KEY,
 });
 
-const chatModel = createFallback({
-  models: [
-    hackclub('google/gemini-3-flash-preview'),
+const hackclub = (modelId: string) => {
+  return wrapLanguageModel({
+    model: hackclubBase(modelId),
+    middleware: {},
+    modelId,
+    providerId: 'hackclub',
+  });
+};
+
+const chatModel = createRetryable({
+  model: hackclub('google/gemini-3-flash-preview'),
+  retries: [
     hackclub('google/gemini-2.5-flash'),
     hackclub('openai/gpt-5-mini'),
+    openrouter('google/gemini-3-flash-preview'),
     openrouter('google/gemini-2.5-flash'),
     openrouter('openai/gpt-5-mini'),
   ],
-  onError: (_error, modelId) => {
-    logger.error(`error with model ${modelId}, switching to next model`);
+  onError: (context) => {
+    const { model } = context.current;
+    logger.error(
+      `error with model ${model.provider}/${model.modelId}, switching to next model`,
+    );
   },
-  modelResetInterval: 60000,
 });
 
-const summariserModel = createFallback({
-  models: [
+const summariserModel = createRetryable({
+  model: hackclub('google/gemini-3-flash-preview'),
+  retries: [
     hackclub('google/gemini-3-flash-preview'),
     hackclub('google/gemini-2.5-flash'),
     hackclub('openai/gpt-5-mini'),
     openrouter('google/gemini-2.5-flash-lite-preview-09-2025'),
     openrouter('openai/gpt-5-nano'),
   ],
-  onError: (_error, modelId) => {
-    logger.error(`error with model ${modelId}, switching to next model`);
+  onError: (context) => {
+    const { model } = context.current;
+    logger.error(
+      `error with model ${model.provider}/${model.modelId}, switching to next model`,
+    );
   },
-  modelResetInterval: 60000,
 });
 
 export const provider = customProvider({
