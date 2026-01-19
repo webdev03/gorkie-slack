@@ -17,12 +17,7 @@ export const getUserInfo = ({ context }: { context: SlackMessageContext }) =>
       try {
         const targetId = normalizeSlackUserId(userId);
 
-        let user = null;
-
-        if (targetId) {
-          const info = await context.client.users.info({ user: targetId });
-          user = info.user ?? null;
-        }
+        const user = targetId ? (await context.client.users.info({ user: targetId })).user ?? null : null;
 
         if (!user) {
           return {
