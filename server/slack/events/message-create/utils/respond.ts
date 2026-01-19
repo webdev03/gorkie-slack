@@ -11,7 +11,6 @@ import { scheduleReminder } from '~/lib/ai/tools/schedule-reminder';
 import { searchSlack } from '~/lib/ai/tools/search-slack';
 import { searchWeb } from '~/lib/ai/tools/search-web';
 import { skip } from '~/lib/ai/tools/skip';
-import { startDM } from '~/lib/ai/tools/start-dm';
 import { summariseThread } from '~/lib/ai/tools/summarise-thread';
 import { successToolCall } from '~/lib/ai/utils';
 import type { RequestHints, SlackMessageContext } from '~/types';
@@ -76,7 +75,6 @@ export async function generateResponse(
         getWeather,
         searchWeb,
         searchSlack: searchSlack({ context }),
-        startDM: startDM({ context }),
         getUserInfo: getUserInfo({ context }),
         leaveChannel: leaveChannel({ context }),
         scheduleReminder: scheduleReminder({ context }),
