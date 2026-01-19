@@ -1,3 +1,4 @@
+import { webSearch } from '@exalabs/ai-sdk';
 import type { ModelMessage, UserContent } from 'ai';
 import { generateText, stepCountIs } from 'ai';
 import { systemPrompt } from '~/lib/ai/prompts';
@@ -9,7 +10,6 @@ import { react } from '~/lib/ai/tools/react';
 import { reply } from '~/lib/ai/tools/reply';
 import { scheduleReminder } from '~/lib/ai/tools/schedule-reminder';
 import { searchSlack } from '~/lib/ai/tools/search-slack';
-import { searchWeb } from '~/lib/ai/tools/search-web';
 import { skip } from '~/lib/ai/tools/skip';
 import { summariseThread } from '~/lib/ai/tools/summarise-thread';
 import { successToolCall } from '~/lib/ai/utils';
@@ -94,7 +94,10 @@ export async function generateResponse(
       toolChoice: 'required',
       tools: {
         getWeather,
-        searchWeb,
+        searchWeb: webSearch({
+          numResults: 10,
+          type: 'auto',
+        }),
         searchSlack: searchSlack({ context }),
         getUserInfo: getUserInfo({ context }),
         leaveChannel: leaveChannel({ context }),
