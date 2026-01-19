@@ -21,6 +21,7 @@
     "@openrouter/ai-sdk-provider": "^1.5.4",
     "@opentelemetry/sdk-node": "^0.208.0",
     "@slack/bolt": "^4.6.0",
+    "@slack/types": "^2.19.0",
     "@t3-oss/env-core": "^0.13.10",
     "ai": "^5.0.121",
     "ai-retry": "^0.12.0",
