@@ -1,5 +1,5 @@
 import { generateText, tool } from 'ai';
-import { z } from 'zod/v4';
+import { z } from 'zod';
 import { summariseThreadPrompt } from '~/lib/ai/prompts/tasks';
 import { provider } from '~/lib/ai/providers';
 import logger from '~/lib/logger';

@@ -64,7 +64,7 @@ server/
 ```typescript
 // External packages first, then internal modules
 import { tool } from 'ai';
-import { z } from 'zod/v4';
+import { z } from 'zod';
 import logger from '~/lib/logger';
 import type { SlackMessageContext } from '~/types';  // Use import type
 ```
@@ -156,6 +156,6 @@ Log levels: `debug`, `info`, `warn`, `error`
 
 - `ai`: Vercel AI SDK for model interactions
 - `@slack/bolt`: Slack app framework
-- `zod`: Schema validation (v4 for some tools: `zod/v4`)
+- `zod`: Schema validation
 - `pino`: Logging
 - `bun`: Runtime (use `RedisClient` from bun for Redis)

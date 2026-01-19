@@ -1,5 +1,5 @@
 import { tool } from 'ai';
-import { z } from 'zod/v4';
+import { z } from 'zod';
 import { env } from '~/env';
 import { isUserAllowed } from '~/lib/allowed-users';
 import logger from '~/lib/logger';
