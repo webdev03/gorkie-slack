@@ -14,7 +14,7 @@ async function resolveTargetMessage(
   offset: number,
 ): Promise<SlackHistoryMessage | null> {
   const channelId = (ctx.event as { channel?: string }).channel;
-  const messageTs = (ctx.event as { ts?: string }).ts;
+  const messageTs = ctx.event.ts;
 
   if (!channelId || !messageTs) return null;
 
@@ -74,7 +74,7 @@ export const reply = ({ context }: { context: SlackMessageContext }) =>
     }),
     execute: async ({ offset = 0, content, type }) => {
       const channelId = (context.event as { channel?: string }).channel;
-      const messageTs = (context.event as { ts?: string }).ts;
+      const messageTs = context.event.ts;
       const currentThread = (context.event as { thread_ts?: string }).thread_ts;
       const userId = (context.event as { user?: string }).user;
 

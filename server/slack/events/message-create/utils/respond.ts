@@ -6,6 +6,7 @@ import { provider } from '~/lib/ai/providers';
 import { getUserInfo } from '~/lib/ai/tools/get-user-info';
 import { getWeather } from '~/lib/ai/tools/get-weather';
 import { leaveChannel } from '~/lib/ai/tools/leave-channel';
+import { mermaid } from '~/lib/ai/tools/mermaid';
 import { react } from '~/lib/ai/tools/react';
 import { reply } from '~/lib/ai/tools/reply';
 import { scheduleReminder } from '~/lib/ai/tools/schedule-reminder';
@@ -103,6 +104,7 @@ export async function generateResponse(
         leaveChannel: leaveChannel({ context }),
         scheduleReminder: scheduleReminder({ context }),
         summariseThread: summariseThread({ context }),
+        mermaid: mermaid({ context }),
         react: react({ context }),
         reply: reply({ context }),
         skip: skip({ context }),

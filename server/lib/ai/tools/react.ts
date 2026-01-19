@@ -16,7 +16,7 @@ export const react = ({ context }: { context: SlackMessageContext }) =>
     }),
     execute: async ({ emojis }) => {
       const channelId = (context.event as { channel?: string }).channel;
-      const messageTs = (context.event as { ts?: string }).ts;
+      const messageTs = context.event.ts;
 
       if (!channelId || !messageTs) {
         return { success: false, error: 'Missing Slack channel or message id' };

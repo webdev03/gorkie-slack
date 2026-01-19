@@ -10,6 +10,7 @@ searchWeb: get fresh info from the internet.
 getUserInfo: fetch Slack user profile (id, avatar, etc).
 scheduleMessage: schedule a message to be sent to the current user (the one who sent the most recent message) in the future.
 summariseThread: get a summary of the current Slack conversation thread - use this tool when asked to provide a summary (it has awareness of more messages).
+mermaid: create and share diagrams (flowcharts, sequence, class, etc.) as images. Use when visualizing processes, architectures, or relationships would help.
 react: add emoji reaction. 
 reply: send threaded reply or message (ends loop). 
 skip: end loop quietly, no reply. 
@@ -17,6 +18,7 @@ leaveChannel: leave the channel you are currently in.
 
 Rules: 
 - reply and leaveChannel END the loop, don't chain tools after. 
+- mermaid: the diagram is uploaded as an image, so you can follow up with the reply tool to add context. Also, the mermaid tool automatically sends the diagram to the thread.
 - reply: 
    content = array of plain text lines - each item in the array is itself a message that will be sent to the conversation.
    offset = go back from the latest user message, NOT the message before.

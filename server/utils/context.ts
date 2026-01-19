@@ -68,7 +68,7 @@ export async function buildChatContext(
 
   const channelId = (ctx.event as { channel?: string }).channel;
   const threadTs = (ctx.event as { thread_ts?: string }).thread_ts;
-  const messageTs = (ctx.event as { ts?: string }).ts;
+  const messageTs = ctx.event.ts;
   const _text = (ctx.event as { text?: string }).text ?? '';
   const _userId = (ctx.event as { user?: string }).user;
 
