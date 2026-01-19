@@ -52,7 +52,7 @@ export async function generateResponse(
       currentMessageContent = replyPrompt;
     }
 
-    const { toolCalls } = await generateText({
+    const { toolCalls, providerMetadata } = await generateText({
       model: provider.languageModel('chat-model'),
       messages: [
         ...messages,
@@ -64,7 +64,9 @@ export async function generateResponse(
       providerOptions: {
         openrouter: {
           reasoning: {
-            max_tokens: 250,
+            enabled: true,
+            exclude: false,
+            effort: "medium"
           },
         },
       },
@@ -99,6 +101,7 @@ export async function generateResponse(
         },
       },
     });
+    console.log(JSON.stringify(providerMetadata))
 
     return { success: true, toolCalls };
   } catch (e) {
