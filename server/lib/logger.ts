@@ -17,24 +17,20 @@ async function exists(path: string): Promise<boolean> {
 }
 
 const isProd = process.env.NODE_ENV === 'production';
-//const isVercel = !!env.VERCEL;
-const isVercel = false;
 const logDir = env.LOG_DIRECTORY ?? 'logs';
 const logLevel = env.LOG_LEVEL ?? 'info';
 
-if (!isVercel && !(await exists(logDir))) {
+if (!(await exists(logDir))) {
   await mkdir(logDir, { recursive: true });
 }
 
 const targets: TransportTargetOptions[] = [];
 
-if (!isVercel) {
-  targets.push({
-    target: 'pino/file',
-    options: { destination: path.join(logDir, 'app.log') },
-    level: logLevel,
-  });
-}
+targets.push({
+  target: 'pino/file',
+  options: { destination: path.join(logDir, 'app.log') },
+  level: logLevel,
+});
 
 if (!isProd) {
   targets.push({
