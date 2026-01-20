@@ -111,7 +111,7 @@ export async function generateResponse(
       },
       system,
       stopWhen: [
-        stepCountIs(10),
+        stepCountIs(25),
         successToolCall('leave-channel'),
         successToolCall('reply'),
         // successToolCall('react'),
