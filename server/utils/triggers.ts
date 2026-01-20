@@ -48,7 +48,9 @@ export async function getTrigger(
   }
 
   if (
-    !message.event.subtype &&
+    (!message.event.subtype ||
+      message.event.subtype === 'thread_broadcast' ||
+      message.event.subtype === 'file_share') &&
     message.event.thread_ts &&
     (
       await client.conversations.replies({
