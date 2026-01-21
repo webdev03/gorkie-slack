@@ -87,11 +87,13 @@ function getContextId(ctx: SlackMessageContext): string {
   const userId = (ctx.event as { user?: string }).user;
   const threadTs = (ctx.event as { thread_ts?: string }).thread_ts;
 
-  return channelType === 'im' && userId
-    ? `dm:${userId}`
-    : threadTs
-      ? `${channel}:${threadTs}`
-      : channel;
+  if (channelType === 'im' && userId) {
+    return `dm:${userId}`;
+  }
+  if (threadTs) {
+    return `${channel}:${threadTs}`;
+  }
+  return channel;
 }
 
 async function handleMessage(args: MessageEventArgs) {
