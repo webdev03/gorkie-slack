@@ -13,14 +13,16 @@ const openrouter = createOpenRouter({
   apiKey: env.OPENROUTER_API_KEY,
 });
 
-const hackclub = (modelId: string) => {
-  return wrapLanguageModel({
+const hackclub = (modelId: string) =>
+  wrapLanguageModel({
     model: hackclubBase(modelId),
-    middleware: {},
+    // middleware is required even though it's unnecessary
+    middleware: {
+      specificationVersion: 'v3',
+    },
     modelId,
     providerId: 'hackclub',
   });
-};
 
 const chatModel = createRetryable({
   model: hackclub('google/gemini-3-flash-preview'),
