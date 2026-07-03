@@ -93,7 +93,6 @@ export default defineConfig({
     'roleplay',
     'retryables',
     'shadcn',
-    'shitposter',
     'srvx',
     'stty',
     'summarisation',
