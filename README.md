@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> This repository has moved.
+> **The source code for Gorkie v3 is now available at:** [techwithanirudh/gorkie](https://github.com/techwithanirudh/gorkie)
+
 <div align="center">
   <img alt="Gorkie banner" src="./.github/banner.png" />
   <h1>Gorkie for Slack</h1>
